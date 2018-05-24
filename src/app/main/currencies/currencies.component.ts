@@ -25,13 +25,12 @@ export class CurrenciesComponent implements OnInit {
       .finally(() => this.isGetCurrenciesArrayRequestPending = false)
       .subscribe(
         (currencies) => {
-          console.log(currencies);
           this.currenciesArray = currencies;
         },
         () => {
           this.getCurrenciesRequestHasError = true;
         }
-      );  // TODO need the USD thing (in component)
+      );
   }
 
   public onBackButtonClick(): void {

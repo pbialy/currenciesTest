@@ -15,6 +15,7 @@ import { NotFoundComponent } from './main/not-found/not-found.component';
 import { LogOutComponent } from './main/log-out/log-out.component';
 import { CurrencyPlnComponent } from './main/currencies/currency-pln/currency-pln.component';
 import { CurrencyUsdComponent } from './main/currencies/currency-usd/currency-usd.component';
+import { AuthenticatedGuard } from './security/authenticated.guard';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { CurrencyUsdComponent } from './main/currencies/currency-usd/currency-us
     AppComponent
   ],
   providers: [
-    CurrenciesService
+    CurrenciesService,
+    AuthenticatedGuard
   ]
 })
 export class AppModule {
