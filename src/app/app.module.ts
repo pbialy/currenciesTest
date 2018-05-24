@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { LoginComponent } from './login/login.component';
 import { InputComponent } from './commons/input/input.component';
+import { FeaturesComponent } from './main/features/features.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { InputComponent } from './commons/input/input.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    InputComponent
+    InputComponent,
+    FeaturesComponent
   ],
   bootstrap: [
     AppComponent

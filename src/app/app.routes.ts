@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { FeaturesComponent } from './main/features/features.component';
 
 export const appRoutes: Routes = [{
   path: '',
@@ -8,6 +9,11 @@ export const appRoutes: Routes = [{
 }, {
   path: 'login',
   component: LoginComponent,
+  // canActivate: [NotAuthenticatedGuard],
+  outlet: 'primary'
+}, {
+  path: 'features',
+  component: FeaturesComponent,
   // canActivate: [NotAuthenticatedGuard],
   outlet: 'primary'
 }];

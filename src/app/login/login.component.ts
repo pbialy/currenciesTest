@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   public loginDataForm: FormGroup = null;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   public ngOnInit(): void {
@@ -38,18 +40,23 @@ export class LoginComponent implements OnInit {
   public triggerLogin(): void {
     this.touchAllFields();
     if (this.loginDataForm.valid) {
-      Object.keys(this.FORM_CONTROLS).forEach(key => {
-        sessionStorage.setItem(
-          this.FORM_CONTROLS[key],
-          this.loginDataForm.value[this.FORM_CONTROLS[key]]
-        );
-      });
+      this.saveDataToSessionStorage();
+      this.router.navigate(['/features']);
     }
   }
 
   private touchAllFields(): void {
     Object.keys(this.FORM_CONTROLS).forEach(key => {
       this.loginDataForm.get(this.FORM_CONTROLS[key]).markAsTouched();
+    });
+  }
+
+  private saveDataToSessionStorage(): void {
+    Object.keys(this.FORM_CONTROLS).forEach(key => {
+      sessionStorage.setItem(
+        this.FORM_CONTROLS[key],
+        this.loginDataForm.value[this.FORM_CONTROLS[key]]
+      );
     });
   }
 
