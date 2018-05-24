@@ -8,7 +8,7 @@ describe('CurrencyPlnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrencyPlnComponent ]
+      declarations: [CurrencyPlnComponent]
     })
     .compileComponents();
   }));
@@ -16,6 +16,8 @@ describe('CurrencyPlnComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CurrencyPlnComponent);
     component = fixture.componentInstance;
+    component.amount = 13.34;
+    component.currencyName = 'LSK';
     fixture.detectChanges();
   });
 
