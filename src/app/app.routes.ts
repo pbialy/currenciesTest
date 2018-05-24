@@ -4,6 +4,7 @@ import { FeaturesComponent } from './main/features/features.component';
 import { CurrenciesComponent } from './main/currencies/currencies.component';
 import { NotFoundComponent } from './main/not-found/not-found.component';
 import { AuthenticatedGuard } from './security/authenticated.guard';
+import { NotAuthenticatedGuard } from './security/not-authenticated.guard';
 
 export const appRoutes: Routes = [{
   path: '',
@@ -12,6 +13,7 @@ export const appRoutes: Routes = [{
 }, {
   path: 'login',
   component: LoginComponent,
+  canActivate: [NotAuthenticatedGuard],
   outlet: 'primary'
 }, {
   path: 'features',

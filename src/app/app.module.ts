@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { LoginComponent } from './login/login.component';
-import { InputComponent } from './commons/input/input.component';
 import { FeaturesComponent } from './main/features/features.component';
 import { CurrenciesComponent } from './main/currencies/currencies.component';
 import { CurrenciesService } from './services/currencies.service';
@@ -16,6 +15,7 @@ import { LogOutComponent } from './main/log-out/log-out.component';
 import { CurrencyPlnComponent } from './main/currencies/currency-pln/currency-pln.component';
 import { CurrencyUsdComponent } from './main/currencies/currency-usd/currency-usd.component';
 import { AuthenticatedGuard } from './security/authenticated.guard';
+import { NotAuthenticatedGuard } from './security/not-authenticated.guard';
 
 @NgModule({
   imports: [
@@ -28,7 +28,6 @@ import { AuthenticatedGuard } from './security/authenticated.guard';
   declarations: [
     AppComponent,
     LoginComponent,
-    InputComponent,
     FeaturesComponent,
     CurrenciesComponent,
     NotFoundComponent,
@@ -41,7 +40,8 @@ import { AuthenticatedGuard } from './security/authenticated.guard';
   ],
   providers: [
     CurrenciesService,
-    AuthenticatedGuard
+    AuthenticatedGuard,
+    NotAuthenticatedGuard
   ]
 })
 export class AppModule {
