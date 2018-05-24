@@ -1,4 +1,4 @@
-<div style="padding: 30px 0px 0px 100px"> <!-- TODO change -->
+<div class="login-container">
   <h3>Please fill your data</h3>
   <br>
   <form
@@ -12,7 +12,7 @@
 
       <span
         *ngIf="hasError(FORM_CONTROLS.USERNAME)"
-        style="color: #f00"
+        class="field-error"
       >Field required</span>
     </p>
     <p>
@@ -22,14 +22,14 @@
       >
       <span
         *ngIf="hasError(FORM_CONTROLS.PASSWORD)"
-        style="color: #f00"
+        class="field-error"
       >Field required</span>
     </p>
   </form>
 </div>
 <br>
-<div style="float: right; margin-right: 50px;">
+<div class="login-button-container">
   <button
     (click)="triggerLogin()"
-  >LOGIN</button>
+  >Login</button>
 </div>
