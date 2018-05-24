@@ -31,12 +31,26 @@ export class LoginComponent implements OnInit {
   }
 
   public hasError(fieldName: string): boolean {
-    // const cc = this.loginDataForm;
-    // debugger;
-    if (this.loginDataForm.errors) {
-      console.log(this.loginDataForm.errors);
-    };
-    return !!this.loginDataForm.errors;
+    return this.loginDataForm.get(fieldName).touched && !!this.loginDataForm.get(fieldName).errors;
+  }
+
+
+  public triggerLogin(): void {
+    this.touchAllFields();
+    if (this.loginDataForm.valid) {
+      Object.keys(this.FORM_CONTROLS).forEach(key => {
+        sessionStorage.setItem(
+          this.FORM_CONTROLS[key],
+          this.loginDataForm.value[this.FORM_CONTROLS[key]]
+        );
+      });
+    }
+  }
+
+  private touchAllFields(): void {
+    Object.keys(this.FORM_CONTROLS).forEach(key => {
+      this.loginDataForm.get(this.FORM_CONTROLS[key]).markAsTouched();
+    });
   }
 
 }
