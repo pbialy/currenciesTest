@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FeaturesComponent } from './main/features/features.component';
 import { CurrenciesComponent } from './main/currencies/currencies.component';
+import { NotFoundComponent } from './main/not-found/not-found.component';
 
 export const appRoutes: Routes = [{
   path: '',
@@ -22,4 +23,12 @@ export const appRoutes: Routes = [{
   component: CurrenciesComponent,
   // canActivate: [NotAuthenticatedGuard],
   outlet: 'primary'
+}, {
+  path: '404',
+  component: NotFoundComponent,
+  // canActivate: [NotAuthenticatedGuard],
+  outlet: 'primary'
+}, {
+  path: '**',
+  redirectTo: '/404'
 }];

@@ -10,6 +10,7 @@ import { InputComponent } from './commons/input/input.component';
 import { FeaturesComponent } from './main/features/features.component';
 import { CurrenciesComponent } from './main/currencies/currencies.component';
 import { CurrenciesService } from './services/currencies.service';
+import { NotFoundComponent } from './main/not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { CurrenciesService } from './services/currencies.service';
     LoginComponent,
     InputComponent,
     FeaturesComponent,
-    CurrenciesComponent
+    CurrenciesComponent,
+    NotFoundComponent
   ],
   bootstrap: [
     AppComponent
