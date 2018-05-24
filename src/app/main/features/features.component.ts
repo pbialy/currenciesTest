@@ -16,7 +16,6 @@ export class FeaturesComponent implements OnInit {
 
 
   public onCurrenciesButtonClick(): void {
-    // on subscribe when data comes
     this.router.navigate(['/currencies']);
   }
 
