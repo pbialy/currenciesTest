@@ -7,5 +7,31 @@
     <button (click)="onBackButtonClick()">Back</button>
   </div>
   <hr>
-  <div class="spinner"><i></i></div>
+  <div
+    *ngIf="isGetCurrenciesArrayRequestPending"
+    class="spinner"
+  >
+    <i></i>
+  </div>
+  <div *ngIf="!isGetCurrenciesArrayRequestPending">
+    <div
+      *ngIf="getCurrenciesRequestHasError"
+      style="padding-left: 20px;"
+    >
+      <h4>Request failed</h4>
+      <p>Please check your internet connection and try again.</p>
+    </div>
+    <div *ngIf="!getCurrenciesRequestHasError">
+      <ng-container *ngFor="let currency of currenciesArray">
+        <app-currency-pln
+          [currencyName]="currency.currencyName"
+          [amount]="currency.amount"
+        ></app-currency-pln>
+        <app-currency-usd
+          [currencyName]="currency.currencyName"
+          [amount]="currency.amount"
+        ></app-currency-usd>
+      </ng-container>
+    </div>
+  </div>
 </div>

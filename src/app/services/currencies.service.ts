@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class CurrenciesService {
@@ -30,21 +28,25 @@ export class CurrenciesService {
       this.getCurrency(this.VALUES_TO_GET[1]),
       this.getCurrency(this.VALUES_TO_GET[2])
     ).map(responses => {
-      return responses.reduce((allValues, currentValue, i) => {
+      // debugger;
+      return responses.map((resp, i) => {
         return {
-          ...allValues,
-          [this.formatCurrencies(this.VALUES_TO_GET[i])]: this.formatAmount(currentValue.bid)
+          currencyName: this.formatCurrencies(this.VALUES_TO_GET[i]),
+          amount: Number(resp.bid)
         };
-      }, {});
+      });
+      // return responses.reduce((allValues, currentValue, i) => {
+      //   return {
+      //     ...allValues,
+      //     [this.formatCurrencies(this.VALUES_TO_GET[i])]: this.formatAmount(currentValue.bid)
+      //   };
+      // }, {});
     });
   }
 
   private formatCurrencies(currencies: string): string {
-    return currencies.slice(0, 3) + '/' + currencies.slice(3);
+    return currencies.slice(0, 3);
   }
 
-  private formatAmount(amount: number): string {
-    return amount.toFixed(2);
-  }
 
 }

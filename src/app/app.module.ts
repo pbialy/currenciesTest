@@ -13,6 +13,8 @@ import { CurrenciesComponent } from './main/currencies/currencies.component';
 import { CurrenciesService } from './services/currencies.service';
 import { NotFoundComponent } from './main/not-found/not-found.component';
 import { LogOutComponent } from './main/log-out/log-out.component';
+import { CurrencyPlnComponent } from './main/currencies/currency-pln/currency-pln.component';
+import { CurrencyUsdComponent } from './main/currencies/currency-usd/currency-usd.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { LogOutComponent } from './main/log-out/log-out.component';
     FeaturesComponent,
     CurrenciesComponent,
     NotFoundComponent,
-    LogOutComponent
+    LogOutComponent,
+    CurrencyPlnComponent,
+    CurrencyUsdComponent
   ],
   bootstrap: [
     AppComponent

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CurrenciesService } from '../../services/currencies.service';
 
+
 @Component({
   selector: 'app-currencies',
   templateUrl: './currencies.component.html',
@@ -9,16 +10,28 @@ import { CurrenciesService } from '../../services/currencies.service';
 })
 export class CurrenciesComponent implements OnInit {
 
+  public isGetCurrenciesArrayRequestPending = true;
+  public getCurrenciesRequestHasError = false;
+
+  public currenciesArray: any[];
+
   constructor(
     private router: Router,
     private currenciesService: CurrenciesService
   ) {}
 
   ngOnInit() {
-    // TODO get currencies and show loader before they are loaded
-    this.currenciesService.getCurrenciesArray().subscribe(currencies => {
-      console.log(currencies);
-    });  // TODO need the USD thing (in component)
+    this.currenciesService.getCurrenciesArray()
+      .finally(() => this.isGetCurrenciesArrayRequestPending = false)
+      .subscribe(
+        (currencies) => {
+          console.log(currencies);
+          this.currenciesArray = currencies;
+        },
+        () => {
+          this.getCurrenciesRequestHasError = true;
+        }
+      );  // TODO need the USD thing (in component)
   }
 
   public onBackButtonClick(): void {
