@@ -21,8 +21,11 @@
       <h4>Request failed</h4>
       <p>Please check your internet connection and try again.</p>
     </div>
-    <div *ngIf="!getCurrenciesRequestHasError">
-      <ng-container *ngFor="let currency of currenciesArray">
+    <div
+      *ngIf="!getCurrenciesRequestHasError"
+      class="curriencies-container"
+    >
+      <ng-container *ngFor="let currency of currenciesArray; let i = index;">
         <app-currency-pln
           [currencyName]="currency.currencyName"
           [amount]="currency.amount"
@@ -31,6 +34,7 @@
           [currencyName]="currency.currencyName"
           [amount]="currency.amount"
         ></app-currency-usd>
+        <br *ngIf="i !== currenciesArray.length - 1">
       </ng-container>
     </div>
   </div>
