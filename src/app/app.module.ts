@@ -8,6 +8,8 @@ import { appRoutes } from './app.routes';
 import { LoginComponent } from './login/login.component';
 import { InputComponent } from './commons/input/input.component';
 import { FeaturesComponent } from './main/features/features.component';
+import { CurrenciesComponent } from './main/currencies/currencies.component';
+import { CurrenciesService } from './services/currencies.service';
 
 @NgModule({
   imports: [
@@ -20,10 +22,14 @@ import { FeaturesComponent } from './main/features/features.component';
     AppComponent,
     LoginComponent,
     InputComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    CurrenciesComponent
   ],
   bootstrap: [
     AppComponent
+  ],
+  providers: [
+    CurrenciesService
   ]
 })
 export class AppModule {

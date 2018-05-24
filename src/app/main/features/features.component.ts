@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-features',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeaturesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {}
+
+
+  public onCurrenciesButtonClick(): void {
+    // on subscribe when data comes
+    this.router.navigate(['/currencies']);
   }
 
 }
